@@ -1,0 +1,51 @@
+<%= form_for(@ticket) do |f| %>
+  <% if @ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+      <ul>
+      <% @ticket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="card wizard-card ct-wizard-orange" id="wizard">
+    <div class="wizard-header">
+    	<h3>
+    	   <b>BUILD</b> YOUR PROFILE <br>
+    	   <small>This information will let us know more about you.</small>
+    	</h3>
+	  </div>
+	  <ul>
+        <li><a href="#about" data-toggle="tab">About</a></li>
+        <li><a href="#account" data-toggle="tab">Account</a></li>
+        <li><a href="#address" data-toggle="tab">Address</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane" id="about">
+        <%= f.text_field :name %>
+        1
+      </div>
+      <div class="tab-pane" id="account">
+        <%= f.text_field :surname %>
+        2
+      </div>
+      <div class="tab-pane" id="address">
+        <%= f.text_field :url %>
+        3
+      </div>
+    </div>
+     <div class="wizard-footer">
+      	<div class="pull-right">
+              <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
+              <%= button_tag(type: 'submit', name:'finish', class: 'btn btn-finish btn-fill btn-warning btn-wd btn-sm') do %>
+              Finish
+              <% end %>
+          </div>
+          <div class="pull-left">
+              <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+          </div>
+          <div class="clearfix"></div>
+    </div>
+<% end %>
